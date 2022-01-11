@@ -19,7 +19,7 @@ function App() {
     userHasAuthenticated( false );
     historyObj.push("/login");
   }
-  async function onLoad() {
+  async function loadCall() {
     try {
       await Auth.currentSession();
       userHasAuthenticated(true);
@@ -34,7 +34,7 @@ function App() {
   }
 
   useEffect(() => {
-    onLoad();
+    loadCall();
   }, []);
 
   return (

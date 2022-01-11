@@ -30,7 +30,7 @@ function App() {
       setIsAuthenticating(false);
     }  
     loadCall();
-  }, []);
+  });
 
   async function handleLogOut() {
     await Auth.signOut();

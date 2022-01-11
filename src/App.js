@@ -14,29 +14,31 @@ function App() {
   const historyObj = useHistory();
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
+  
+  useEffect(() => {
+    async function loadCall() {
+      try {
+        await Auth.currentSession();
+        userHasAuthenticated(true);
+      }
+      catch(e) {
+        if (e !== 'No current user') {
+          onError(e);
+          historyObj.push("/login");
+        }
+      }
+      setIsAuthenticating(false);
+    }  
+    loadCall();
+  }, []);
+
   async function handleLogOut() {
     await Auth.signOut();
     userHasAuthenticated( false );
     historyObj.push("/login");
   }
-  async function loadCall() {
-    try {
-      await Auth.currentSession();
-      userHasAuthenticated(true);
-    }
-    catch(e) {
-      if (e !== 'No current user') {
-        onError(e);
-        historyObj.push("/login");
-      }
-    }
-    setIsAuthenticating(false);
-  }
 
-  useEffect(() => {
-    loadCall();
-  }, []);
-
+  
   return (
     !isAuthenticating && (
     <div className="App container py-3">

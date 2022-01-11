@@ -19,10 +19,6 @@ function App() {
     userHasAuthenticated( false );
     historyObj.push("/login");
   }
-
-  useEffect(() => {
-    onLoad();
-  }, []);
   async function onLoad() {
     try {
       await Auth.currentSession();
@@ -36,6 +32,10 @@ function App() {
     }
     setIsAuthenticating(false);
   }
+
+  useEffect(() => {
+    onLoad();
+  }, []);
 
   return (
     !isAuthenticating && (

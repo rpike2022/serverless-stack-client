@@ -33,7 +33,6 @@ export default function Notes() {
     }
     async function handleSubmit(event) {
         let attachment;
-        let deleteAttachment;
         event.preventDefault();
         if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
             alert(
@@ -45,7 +44,7 @@ export default function Notes() {
         setIsLoading(true);
         try {
             if (note.attachment) {
-                deleteAttachment = await s3Delete(note.attachment);
+                await s3Delete(note.attachment);
             }
             if (file.current) {
                 attachment = await s3Upload(file.current);

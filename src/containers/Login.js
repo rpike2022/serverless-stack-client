@@ -41,7 +41,7 @@ export default function Login() {
             <Form onSubmit={handleSubmit}>
                 <Form.Group size="lg" controlId="email">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control autoFocus type="email" value={fields.email} onChange={handleFieldChange} />
+                    <Form.Control autoFocus type="email" value={fields.email} onChange={handleFieldChange} placeholder="Enter e-mail address" />
                 </Form.Group>
                 <Form.Group size="lg" controlId="password">
                     <Form.Label>Password</Form.Label>

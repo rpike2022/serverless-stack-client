@@ -72,6 +72,9 @@ export default function Notes() {
         }
         setIsDeleting(true);
         try {
+            if (note.attachment) {
+                await s3Delete(note.attachment);
+            }
             await deleteNote();
             history.push("/");
         } catch (e) {

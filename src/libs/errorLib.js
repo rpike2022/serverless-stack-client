@@ -1,12 +1,12 @@
 //--- debugging / testing
 import * as Sentry from "@sentry/react";
 
-const isLocal = process.env.NODE_ENV === "development";
+const isLocal = false; //process.env.NODE_ENV === "development";
 export function initSentry() {
     if (isLocal) {
         return;
     }
-    Sentry.init({ dsn: "7dc42313380f4979a1c575042f293daa@o1115547.ingest.sentry.io/123456" });
+    Sentry.init({ dsn: "https://7dc42313380f4979a1c575042f293daa@o1115547.ingest.sentry.io/6147646" });
 }
 export function logError(error, errorInfo = null) {
     if (isLocal) {
